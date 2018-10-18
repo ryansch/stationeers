@@ -2,7 +2,7 @@ Docker container running the Stationeers dedicated server.
 
 ### Usage
 ```console
-$ docker run \
+docker run \
 -it --rm \
 -p 27500:27500 -p 27500:27500/udp -p 27015:27015/udp \
 -v $pwd/stationeers:/var/opt/stationeers \
