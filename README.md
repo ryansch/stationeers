@@ -5,9 +5,8 @@ Docker container running the Stationeers dedicated server.
 $ docker run \
 -it --rm \
 -p 27500:27500 -p 27500:27500/udp -p 27015:27015/udp \
--v $pwd/default.ini:/data/default.ini \
--v $pwd/saves:/data/saves \
-biseque/stationeers \
+-v $pwd/stationeers:/var/opt/stationeers \
+dtandersen/stationeers \
 -batchmode -nographics -autostart -autosaveinterval=300 -clearallinterval=900
 ```
 
