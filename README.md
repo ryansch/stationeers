@@ -99,14 +99,12 @@ Saves and configuration are located at `/var/opt/stationeers`.
 |   `-- opt
 |      `-- stationeers
 |          |-- default.ini
+|          |-- Player.log -> /root/.config/unity3d/Rocketwerkz/rocketstation/Player.log
 |          `-- saves
 |              |-- mysave1
 |              `-- mysave2
-|-- opt
-|   `-- stationeers
-`-- root
-    `-- .config
-      `-- ...
+`-- opt
+    `-- stationeers
 ```
 
 ## rcon
