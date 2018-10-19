@@ -86,7 +86,7 @@ Specify the world type with `-worldtype=Mars|Moon|Europa`.
 Refer to the Unofficial Stationeers Wiki for [command line options](https://stationeers-wiki.com/Dedicated_Server_Guide).
 
 * `-clearinterval=<time in seconds>` - How often to remove disconnected players ([0=never](https://steamcommunity.com/games/544550/announcements/detail/1692683865304626238))
-* `-saveinterval`=<time in seconds> - How often to auto save the game.
+* `-saveinterval=<time in seconds>` - How often to auto save the game.
 
 Note: `-batchmode`, `-nographics`, and `-autostart` are automatically set.
 
