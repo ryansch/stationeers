@@ -6,7 +6,7 @@ Play [Stationeers](https://store.steampowered.com/app/544550/Stationeers/) with 
 
 **Interactive**
 
-For a quick test run Stationeers in interactive mode with the `-it' option. `--rm` deletes the container afterward. `CTRL+C` stops the server.
+For a quick test run Stationeers in interactive mode with the `-it` option. `--rm` deletes the container afterward. `CTRL+C` stops the server.
 
 ```console
 docker run -it --rm \
