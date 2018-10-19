@@ -1,8 +1,12 @@
-Play Stationeers with your friends!
+# Stationeers Dedicated Server
+
+Play [Stationeers](https://store.steampowered.com/app/544550/Stationeers/) with your friends!
 
 ## Usage
 
-Interactive
+**Interactive**
+
+For a quick test run Stationeers in interactive mode with the `-it' option. `--rm` deletes the container afterward. `CTRL+C` stops the server.
 
 ```console
 docker run -it --rm \
@@ -12,7 +16,9 @@ dtandersen/stationeers \
 -loadworld=myworld
 ```
 
-Daemonize
+**Background**
+
+Run Stationeers as background process with the `-d` (detached) option.
 
 ```console
 docker run -d \
@@ -21,6 +27,30 @@ docker run -d \
 -v `pwd`/stationeers:/var/opt/stationeers \
 dtandersen/stationeers \
 -loadworld=myworld
+```
+
+View the logs:
+
+```console
+docker logs stationeers
+```
+
+Stop the server:
+
+```console
+docker stop stationeers
+```
+
+Restart the server:
+
+```console
+docker restart stationeers
+```
+
+Destroy the server:
+
+```console
+docker rm stationeers
 ```
 
 ## Configuration
@@ -48,6 +78,8 @@ RCONPASSWORD=stationeers
 Saves are stored in the `/saves` directory of the mounted volume. Saves aren't preserved if `-v /some/local/path:/var/opt/stationeers` isn't used.
 
 Launch the server with the `-loadworld=<name of save>` option to load an existing save.
+
+Specify the world type with `-worldtype=Mars|Moon|Europa`.
 
 ## Server Options
 
