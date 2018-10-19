@@ -55,7 +55,7 @@ docker rm stationeers
 
 ## Configuration
 
-Put `default.ini` in the root of the mounted volume. If no `default.ini` is found a default `default.ini` is used. A random password is generated for rcon.
+Put `default.ini` in the root of the mounted volume. If no `default.ini` is found a default `default.ini` is used.
 
 Example `default.ini`:
 
@@ -75,15 +75,18 @@ RCONPASSWORD=stationeers
 
 ## Saves
 
-Saves are stored in the `/saves` directory of the mounted volume. Saves aren't preserved if `-v /some/local/path:/var/opt/stationeers` isn't used.
+Saves are stored in the `/saves` directory of the mounted volume. Saves will be lost if `-v /some/local/path:/var/opt/stationeers` wasn't used.
 
-Launch the server with the `-loadworld=<name of save>` option to load an existing save.
+Start the server with the `-loadworld=<name of save>` option to load a save.
 
 Specify the world type with `-worldtype=Mars|Moon|Europa`.
 
 ## Server Options
 
 Refer to the Unofficial Stationeers Wiki for [command line options](https://stationeers-wiki.com/Dedicated_Server_Guide).
+
+* `-clearinterval=<time in seconds>` - How often to remove disconnected players ([0=never](https://steamcommunity.com/games/544550/announcements/detail/1692683865304626238))
+* `-saveinterval`=<time in seconds> - How often to auto save the game.
 
 Note: `-batchmode`, `-nographics`, and `-autostart` are automatically set.
 
@@ -108,6 +111,10 @@ Saves and configuration are located at `/var/opt/stationeers`.
 ```
 
 ## rcon
+
+The "rcon console" is available at http://HOST:GAMEPORT. Remove `-p 27500` from `docker run` to disable remote access to rcon.
+
+The rcon password is set by `RCONPASSWORD` in `default.ini`. A random password is generated if no `default.ini` was present when the server started.
 
 Try [stationeersrcon](https://github.com/matjam/stationeersrcon).
 
