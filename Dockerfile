@@ -2,7 +2,12 @@ FROM biseque/steamcmd
 MAINTAINER https://github.com/dtandersen/stationeers
 
 ARG MANIFEST=6876049737833862248
-RUN /steamcmd/steamcmd.sh +login anonymous +download_depot 600760 600762 $MANIFEST +quit && \
+
+WORKDIR /
+
+RUN apt-get update && \
+  apt-get pwgen -y \
+  /steamcmd/steamcmd.sh +login anonymous +download_depot 600760 600762 $MANIFEST +quit && \
   mv /steamcmd/linux32/steamapps/content/app_600760/depot_600762 /opt/stationeers && \
   rm -rf /steamcmd/linux32/steamapps/content/app_600760
 
