@@ -87,6 +87,28 @@ Refer to the Unofficial Stationeers Wiki for [command line options](https://stat
 
 Note: `-batchmode`, `-nographics`, and `-autostart` are automatically set.
 
+## Image Layout
+
+Stationeers is installed to `/opt/stationeers`.
+
+Saves and configuration are located at `/var/opt/stationeers`.
+
+```
+/
+|-- var
+|   `-- opt
+|      `-- stationeers
+|          |-- default.ini
+|          `-- saves
+|              |-- mysave1
+|              `-- mysave2
+|-- opt
+|   `-- stationeers
+`-- root
+    `-- .config
+      `-- ...
+```
+
 ## rcon
 
 Try [stationeersrcon](https://github.com/matjam/stationeersrcon).
