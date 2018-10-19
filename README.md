@@ -57,7 +57,7 @@ Note: `-batchmode`, `-nographics`, and `-autostart` are automatically set.
 
 ## rcon
 
-Try [srcon](https://github.com/matjam/stationeersrcon).
+Try [stationeersrcon](https://github.com/matjam/stationeersrcon).
 
 ```console
 curl -L https://github.com/matjam/stationeersrcon/releases/download/v1.2.0/srcon-1.2.0-linux.zip -o /tmp/srcon.zip
