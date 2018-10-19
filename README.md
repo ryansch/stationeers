@@ -81,20 +81,20 @@ Start the server with the `-loadworld=<name of save>` option to load a save.
 
 Specify the world type with `-worldtype=Mars|Moon|Europa`.
 
-## Server Options
-
-Refer to the Unofficial Stationeers Wiki for [command line options](https://stationeers-wiki.com/Dedicated_Server_Guide).
+## Command Line Options
 
 * `-clearinterval=<time in seconds>` - How often to remove disconnected players ([0=never](https://steamcommunity.com/games/544550/announcements/detail/1692683865304626238), default=immediately)
 * `-saveinterval=<time in seconds>` - How often to auto save the game (default=never)
 
-Note: `-batchmode`, `-nographics`, and `-autostart` are automatically set.
+Refer to the Unofficial Stationeers Wiki for more information about [command line options](https://stationeers-wiki.com/Dedicated_Server_Guide).
+
+NOTE: `-batchmode`, `-nographics`, and `-autostart` are automatically set.
 
 ## Image Layout
 
 Stationeers is installed to `/opt/stationeers`.
 
-Saves and configuration are located at `/var/opt/stationeers`.
+Saves and configuration are stored at `/var/opt/stationeers`.
 
 ```
 /
@@ -102,10 +102,11 @@ Saves and configuration are located at `/var/opt/stationeers`.
 |   `-- opt
 |      `-- stationeers
 |          |-- default.ini
-|          |-- Player.log -> /root/.config/unity3d/Rocketwerkz/rocketstation/Player.log
-|          `-- saves
-|              |-- mysave1
-|              `-- mysave2
+|          |-- saves
+|          |   |-- mysave1
+|          |   `-- mysave2
+|          `-- log
+|              `-- Player.log <- /root/.config/unity3d/Rocketwerkz/rocketstation/Player.log
 `-- opt
     `-- stationeers
 ```
