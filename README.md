@@ -55,7 +55,7 @@ docker rm stationeers
 
 ## Configuration
 
-Put `default.ini` in the root of the mounted volume. If no `default.ini` is found a default `default.ini` is used. Change the rcon password!!
+Put `default.ini` in the root of the mounted volume. If no `default.ini` is found a default `default.ini` is used. A random password is generated for rcon.
 
 Example `default.ini`:
 
