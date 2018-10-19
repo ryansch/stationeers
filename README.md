@@ -115,9 +115,11 @@ Saves and configuration are stored at `/var/opt/stationeers`.
 
 The "rcon console" is available at http://HOST:GAMEPORT. Remove `-p 27500` from `docker run` to disable remote access to rcon.
 
-The rcon password is set by `RCONPASSWORD` in `default.ini`. A random password is generated if no `default.ini` was present when the server started.
+The rcon password is set by `RCONPASSWORD` in `default.ini`. A random password is generated if `default.ini` doesn't exist when the server starts.
 
-Try [stationeersrcon](https://github.com/matjam/stationeersrcon).
+### stationeersrcon
+
+[stationeersrcon](https://github.com/matjam/stationeersrcon) is a command line rcon client for Stationeers.
 
 ```console
 curl -L https://github.com/matjam/stationeersrcon/releases/download/v1.2.0/srcon-1.2.0-linux.zip -o /tmp/srcon.zip
