@@ -1,7 +1,7 @@
 FROM biseque/steamcmd
 MAINTAINER https://github.com/dtandersen/stationeers
 
-ARG MANIFEST=7719736930091050293
+ARG MANIFEST=7808409400783635740
 
 WORKDIR /
 
