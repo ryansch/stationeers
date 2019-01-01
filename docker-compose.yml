@@ -1,0 +1,53 @@
+version: '2.4'
+services:
+  stationeers:
+    image: ryansch/stationeers:latest
+    container_name: stationeers
+    command: -loadworld=Stationeers -autosaveinterval=1200
+    restart: always
+    ports:
+      - '27500:27500'
+      - '27500:27500/udp'
+      - '27015:27015/udp'
+    networks:
+      - stationeers
+    volumes:
+      - ./stationeers:/var/opt/stationeers
+    mem_reservation: 7000M
+    mem_limit: 7300M
+    memswap_limit: 7300M
+    mem_swappiness: 0
+
+  traefik:
+    image: traefik:1.7
+    container_name: traefik
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - stationeers
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/traefik.toml
+      - ./acme.json:/acme.json
+
+  portainer:
+    image: portainer/portainer:latest
+    ports:
+      - "9000:9000"
+    command: ["-H", "unix:///var/run/docker.sock", "--admin-password", "CHANGEME"]
+    networks:
+      - stationeers
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./portainer:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=stationeers"
+      - "traefik.controller.frontend.rule=Host:CHANGEME"
+      - "traefik.controller.port=9000"
+
+networks:
+  stationeers:
+    name: stationeers
