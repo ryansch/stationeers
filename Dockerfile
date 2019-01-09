@@ -25,3 +25,6 @@ VOLUME /var/opt/stationeers
 EXPOSE 27500/udp 27015/udp
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
+
+COPY healthcheck.sh /
+HEALTHCHECK --interval=30s --timeout=30s --start-period=2m --retries=3 CMD /healthcheck.sh
