@@ -4,7 +4,8 @@ services:
     image: ryansch/stationeers:latest
     container_name: stationeers
     command: -loadworld=Stationeers -autosaveinterval=1200
-    restart: always
+    restart: on-failure
+    stop_grace_period: 1m
     ports:
       - '27500:27500'
       - '27500:27500/udp'
@@ -13,10 +14,8 @@ services:
       - stationeers
     volumes:
       - ./stationeers:/var/opt/stationeers
-    mem_reservation: 7000M
-    mem_limit: 7300M
-    memswap_limit: 7300M
-    mem_swappiness: 0
+    environment:
+      HEALTHCHECK_PASSWORD: CHANGEME
 
   traefik:
     image: traefik:1.7
@@ -34,6 +33,7 @@ services:
 
   portainer:
     image: portainer/portainer:latest
+    restart: always
     ports:
       - "9000:9000"
     command: ["-H", "unix:///var/run/docker.sock", "--admin-password", "CHANGEME"]
