@@ -14,8 +14,6 @@ services:
       - stationeers
     volumes:
       - ./stationeers:/var/opt/stationeers
-    environment:
-      HEALTHCHECK_PASSWORD: CHANGEME
 
   traefik:
     image: traefik:1.7
