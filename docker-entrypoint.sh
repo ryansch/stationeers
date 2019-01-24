@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 set -e
 
 BASE=/var/opt/stationeers
@@ -19,6 +19,8 @@ cat << EOF > /root/.srcon
   "port": "27500"
 }
 EOF
+
+tail --pid $$ -F /root/.config/unity3d/Rocketwerkz/rocketstation/Player.log &
 
 exec /opt/stationeers/rocketstation_DedicatedServer.x86_64 \
   -batchmode -nographics -autostart \
