@@ -1,0 +1,22 @@
+[Unit]
+Description=Stationeers
+After=docker.service
+BindsTo=docker.service
+
+[Service]
+TimeoutStartSec=0
+TimeoutStopSec=30
+Restart=always
+RestartSec=10
+
+WorkingDirectory=/opt/stationeers
+
+ExecStartPre=-/usr/local/bin/docker-compose kill
+ExecStartPre=-/usr/local/bin/docker-compose rm -f
+
+ExecStart=/usr/local/bin/docker-compose up --force-recreate
+
+ExecStop=/usr/local/bin/docker-compose down
+
+[Install]
+WantedBy=multi-user.target
