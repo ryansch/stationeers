@@ -4,53 +4,34 @@ Play [Stationeers](https://store.steampowered.com/app/544550/Stationeers/) with 
 
 ## Usage
 
-**Interactive**
-
-For a quick test run Stationeers in interactive mode with the `-it` option. `--rm` deletes the container afterward. `CTRL+C` stops the server.
+Start stationeers with the following:
 
 ```console
-docker run -it --rm \
--p 27500:27500 -p 27500:27500/udp -p 27015:27015/udp \
--v `pwd`/stationeers:/var/opt/stationeers \
-dtandersen/stationeers \
--loadworld=myworld
-```
-
-**Background**
-
-Run Stationeers as background process with the `-d` (detached) option.
-
-```console
-docker run -d \
---name stationeers \
--p 27500:27500 -p 27500:27500/udp -p 27015:27015/udp \
--v `pwd`/stationeers:/var/opt/stationeers \
-dtandersen/stationeers \
--loadworld=myworld
+docker-compose up -d stationeers
 ```
 
 View the logs:
 
 ```console
-docker logs stationeers
+docker-compose logs stationeers
 ```
 
 Stop the server:
 
 ```console
-docker stop stationeers
+docker-compose stop stationeers
 ```
 
 Restart the server:
 
 ```console
-docker restart stationeers
+docker-compose restart stationeers
 ```
 
 Destroy the server:
 
 ```console
-docker rm stationeers
+docker-compose rm -s stationeers
 ```
 
 ## Configuration
@@ -104,32 +85,24 @@ Saves and configuration are stored at `/var/opt/stationeers`.
 |          |-- default.ini
 |          |-- saves
 |          |   |-- mysave1
-|          |   `-- mysave2
-|          `-- log
-|              `-- Player.log <- /root/.config/unity3d/Rocketwerkz/rocketstation/Player.log
+|              `-- mysave2
 `-- opt
     `-- stationeers
 ```
 
 ## rcon
 
-The "rcon console" is available at http://HOST:GAMEPORT. Remove `-p 27500` from `docker run` to disable remote access to rcon.
+The "rcon console" is available at http://HOST:GAMEPORT. Remove `27500:27500` from `docker-compose.yml` to disable remote access to rcon.
 
 The rcon password is set by `RCONPASSWORD` in `default.ini`. A random password is generated if `default.ini` doesn't exist when the server starts.
 
-### stationeersrcon
+The command line rcon console ([stationeersrcon](https://github.com/matjam/stationeersrcon)) is available with: `docker-compose exec stationeers srcon <command>`
 
-[stationeersrcon](https://github.com/matjam/stationeersrcon) is a command line rcon client for Stationeers.
+Example:
 
 ```console
-curl -L https://github.com/matjam/stationeersrcon/releases/download/v1.2.0/srcon-1.2.0-linux.zip -o /tmp/srcon.zip
-sudo unzip /tmp/srcon.zip srcon -d /bin
-rm -f /tmp/srcon.zip
-cat << EOF > ~/.srcon
-{
-  "password": "rconpassword",
-  "hostname": "127.0.0.1",
-  "port": "27500"
-}
-srcon status
+$ docker-compose exec stationeers srcon status
+GameVersion : 0.2.1879.8621
+GameStatus : Loading
+No Players
 ```
