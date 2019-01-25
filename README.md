@@ -2,6 +2,10 @@
 
 Play [Stationeers](https://store.steampowered.com/app/544550/Stationeers/) with your friends!
 
+## Getting Started in the Cloud
+
+[Get started with a VPS/Instance](https://github.com/ryansch/stationeers/wiki/Getting-Started-in-the-Cloud)
+
 ## Usage
 
 Start stationeers with the following:
